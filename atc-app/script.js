@@ -18,7 +18,7 @@ async function generateCommands() {
     div.textContent = fullText;
 
     const button = document.createElement("button");
-    button.textContent = "Play";
+    button.textContent = "Play 🔊";
     button.className = "play-button";
     button.onclick = async () => {
       const res = await fetch("/.netlify/functions/generateAudio", {
