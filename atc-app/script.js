@@ -1,38 +1,38 @@
-const phrases = [
-  "[CALLSIGN], cleared for takeoff runway 22",
-  "[CALLSIGN], contact tower on 118.7",
-  "[CALLSIGN], line up and wait runway 04",
-  "[CALLSIGN], taxi to holding point via Alpha and Bravo"
-];
 
 async function generateCommands() {
-  const callsign = document.getElementById("callsign").value.trim().toUpperCase();
-  const commandList = document.getElementById("commandList");
-  commandList.innerHTML = "";
+  const callsign = document.getElementById("callsign").value.toUpperCase();
+  const container = document.getElementById("commands");
 
-  for (const template of phrases) {
-    const text = template.replace("[CALLSIGN]", callsign);
-    const audioUrl = await generateAudio(text);
+  // Clear previous commands to avoid duplicates
+  container.innerHTML = "";
 
+  const phrases = [
+    `${callsign}, cleared for takeoff runway 22`,
+    `${callsign}, line up and wait runway 04`,
+    `${callsign}, contact tower on 118.7`,
+    `${callsign}, taxi to holding point via Alpha and Bravo`,
+  ];
+
+  for (const phrase of phrases) {
     const div = document.createElement("div");
-    div.innerText = text;
+    div.textContent = phrase;
 
-    const btn = document.createElement("button");
-    btn.innerText = "▶️ Play";
-    btn.onclick = () => new Audio(audioUrl).play();
+    const button = document.createElement("button");
+    button.textContent = "▶️ Play";
+    button.onclick = async () => {
+      const response = await fetch("/.netlify/functions/generateAudio", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ input: phrase }),
+      });
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBlob = new Blob([arrayBuffer], { type: "audio/mpeg" });
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = new Audio(audioUrl);
+      audio.play();
+    };
 
-    div.appendChild(btn);
-    commandList.appendChild(div);
+    div.appendChild(button);
+    container.appendChild(div);
   }
-}
-
-async function generateAudio(text) {
-  const response = await fetch("/.netlify/functions/generateAudio", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ input: text })
-  });
-
-  const blob = await response.blob();
-  return URL.createObjectURL(blob);
 }
