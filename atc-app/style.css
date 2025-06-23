@@ -87,18 +87,21 @@ button:hover {
   }
 
   #commands div {
-    flex-direction: column;
-    align-items: center;
-    text-align: center; /* <-- TÄRKEÄ */
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: center !important; /* Tämä tasaa myös sisällön */
   }
 
   .play-button {
     width: 100%;
+    max-width: 250px;
     height: 50px;
     margin-top: 1rem;
     display: block;
     text-align: center;
   }
 }
+
 
 
