@@ -88,14 +88,15 @@ button:hover {
 
   #commands div {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
-.play-button {
-  width: 100%;
-  height: 50px;
-  margin-top: 1rem;
-  display: block;
-  text-align: center;
+  .play-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+  }
 }
-}
+
