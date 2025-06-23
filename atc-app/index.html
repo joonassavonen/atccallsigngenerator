@@ -1,20 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ATC Generator</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <h1>ATC Callsign Generator</h1>
-  <input type="text" id="callsign" placeholder="OH-ABC" />
-  <button onclick="generateCommands()">Generate Commands</button>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>ATC Callsign Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .wrapper {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      p.description {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>ATC Callsign Generator</h1>
+      <p class="description">Enter a flight callsign below and generate example ATC radio transmissions. Press play to hear them spoken aloud.</p>
 
-  <div id="commands"></div>
+      <input type="text" id="callsign" placeholder="OH-ABC">
+      <button onclick="generateCommands()">Generate Commands</button>
 
-  <script src="script.js"></script>
-</body>
+      <div id="commands"></div>
+    </div>
 
-</html>
+    <script src="script.js"></script>
+  
+
+</body></html>
