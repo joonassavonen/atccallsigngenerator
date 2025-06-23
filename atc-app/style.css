@@ -93,6 +93,7 @@ button:hover {
 
   .play-button {
     width: 100%;
+    height: 20px;
     margin-top: 1rem;
     margin-right: 1rem;
     margin-left: 1rem;
