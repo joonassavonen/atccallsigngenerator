@@ -4,9 +4,9 @@ async function generateCommands() {
   const container = document.getElementById("commands");
 
   const phrases = [
-    `, cleared for takeoff runway 22`,
+    `, cleared for takeoff runway 2 2`,
     `, line up and wait runway 04`,
-    `, contact tower on 118.7`,
+    `, contact tower on 118 decimal 7`,
     `, taxi to holding point via Alpha and Bravo`
   ];
 
